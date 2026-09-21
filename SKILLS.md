@@ -19,3 +19,4 @@ Registro de las habilidades/prompts que usamos con la IA (Claude) para construir
 - El fichero de rutas quedó como `routes.js` en vez de `productos.routes.js` → el servidor no lo encontraba (`ERR_MODULE_NOT_FOUND`). **Corrección:** renombrarlo.
 - `enum` de sectores inicial genérico → **corregido** a los sectores reales de Disai.
 - *Warning* de Mongoose por la opción `new` en `findByIdAndUpdate` (deprecada) → funciona igual; anotado.
+- **El bug más gordo:** la API funcionaba en **local** pero en **Vercel** daba `500` (esperaba 10s y fallaba). Causa: Mongoose en *serverless* — la conexión no estaba lista a tiempo. **Corrección:** reutilizar UNA sola conexión (promesa cacheada) y **esperarla (`await conectar()`) antes de cada petición** con un middleware. Además se hizo el front resistente (que no se rompa si la API tarda). Lo detectamos porque el front se quedaba en blanco y la API tardaba 10s.

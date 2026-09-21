@@ -46,6 +46,6 @@ disai-app/
 
 ## Reflexión
 - **Más rápido con IA:** montar la estructura (Mongoose, controllers, hook), los estilos y probar la API entera en segundos.
-- **Qué costó controlar / errores de la IA:** una ruta mal nombrada, un *warning* de Mongoose (opción `new` deprecada), y hubo que **verificar** que las validaciones funcionaban de verdad (probé un sector inválido → devolvió **400**, correcto).
+- **Qué costó controlar / errores de la IA:** una ruta mal nombrada; un *warning* de Mongoose; verificar que las validaciones funcionaban (sector inválido → **400**); y **el fallo más importante**: el código de la IA funcionaba en local pero **daba error 500 al desplegarlo en Vercel** (Mongoose en *serverless* no esperaba la conexión). Hubo que **diagnosticarlo** (la API tardaba 10s, el front se quedaba en blanco) y **corregirlo** (esperar la conexión antes de cada petición + front resistente). Este fue el mejor ejemplo de por qué hay que **entender y probar** lo que genera la IA, no solo copiarlo.
 - **Qué entendí mejor:** cómo Mongoose define un **esquema con validaciones** y da métodos CRUD listos (más cómodo que MongoClient nativo); y cómo un **hook personalizado** agrupa el estado y las acciones del CRUD.
 - **¿Volvería a usar IA?** Sí, para ir rápido — pero **revisando y probando todo**, porque el código hay que entenderlo para justificarlo y corregir sus fallos.
