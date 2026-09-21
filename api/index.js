@@ -6,15 +6,20 @@ import cors from "cors";
 import { conectar } from "./db.js";
 import productosRoutes from "./routes/productos.routes.js";
 
-// Conexión a MongoDB con Mongoose
-conectar()
-    .then(() => console.log("Conectado a MongoDB (disai)"))
-    .catch((error) => console.log("Error de conexión:", error.message));
-
 const servidor = express();
 
 servidor.use(cors());
 servidor.use(express.json());
+
+// Aseguramos la conexión a MongoDB ANTES de cada petición (necesario en serverless)
+servidor.use(async (peticion, respuesta, siguiente) => {
+    try{
+        await conectar();
+        siguiente();
+    }catch(error){
+        respuesta.status(500).json({ error : "Error de conexión a la base de datos" });
+    }
+});
 
 servidor.use("/api/productos", productosRoutes);
 

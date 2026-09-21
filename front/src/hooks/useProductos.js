@@ -9,19 +9,23 @@ export function useProductos(){
 
     useEffect(() => {
         obtenerProductos()
-            .then(setProductos)
+            .then(datos => setProductos(Array.isArray(datos) ? datos : []))
             .catch(() => setError(true))
             .finally(() => setCargando(false))
     }, [])
 
     async function agregar(producto){
         const nuevo = await crearProducto(producto)
-        setProductos([...productos, nuevo])
+        if(nuevo && nuevo._id){
+            setProductos([...productos, nuevo])
+        }
     }
 
     async function editar(id, cambios){
         const actualizado = await actualizarProducto(id, cambios)
-        setProductos(productos.map(p => p._id === id ? actualizado : p))
+        if(actualizado && actualizado._id){
+            setProductos(productos.map(p => p._id === id ? actualizado : p))
+        }
     }
 
     async function eliminar(id){
