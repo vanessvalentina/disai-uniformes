@@ -1,0 +1,38 @@
+{
+  "info": {
+    "name": "Inversiones Disai API",
+    "description": "CRUD de productos (uniformes) — PEC 5",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "base", "value": "http://localhost:4000" }
+  ],
+  "item": [
+    {
+      "name": "Listar productos",
+      "request": { "method": "GET", "url": "{{base}}/api/productos" }
+    },
+    {
+      "name": "Crear producto",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": "{{base}}/api/productos",
+        "body": { "mode": "raw", "raw": "{\n  \"nombre\": \"Bata médica\",\n  \"sector\": \"sanitario\",\n  \"descripcion\": \"Bata blanca antifluido\",\n  \"precio\": 30,\n  \"disponible\": true\n}" }
+      }
+    },
+    {
+      "name": "Editar producto",
+      "request": {
+        "method": "PUT",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": "{{base}}/api/productos/:id",
+        "body": { "mode": "raw", "raw": "{\n  \"precio\": 35\n}" }
+      }
+    },
+    {
+      "name": "Eliminar producto",
+      "request": { "method": "DELETE", "url": "{{base}}/api/productos/:id" }
+    }
+  ]
+}

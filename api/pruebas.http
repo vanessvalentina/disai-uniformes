@@ -1,0 +1,38 @@
+@base = http://localhost:4000
+
+### Listar productos
+GET {{base}}/api/productos
+
+### Crear producto
+POST {{base}}/api/productos
+Content-Type: application/json
+
+{
+  "nombre": "Bata médica",
+  "sector": "sanitario",
+  "descripcion": "Bata blanca antifluido",
+  "precio": 30,
+  "disponible": true
+}
+
+### Editar producto (pon un _id real de la lista)
+PUT {{base}}/api/productos/PON_UN_ID
+Content-Type: application/json
+
+{
+  "precio": 35
+}
+
+### Eliminar producto (pon un _id real de la lista)
+DELETE {{base}}/api/productos/PON_UN_ID
+
+### Validación: sector inválido -> debe dar 400
+POST {{base}}/api/productos
+Content-Type: application/json
+
+{
+  "nombre": "X",
+  "sector": "inventado",
+  "descripcion": "y",
+  "precio": 5
+}
