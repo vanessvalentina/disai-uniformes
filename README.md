@@ -3,9 +3,9 @@
 CRUD completo de **productos (uniformes)** para el catálogo de **Inversiones Disai** (@disaiuniformes, empresa de uniformes corporativos). Proyecto construido con **apoyo de IA** (Claude) de principio a fin, con el proceso documentado.
 
 ## Enlaces
-- **Front desplegado:** _(añadir URL de Vercel)_
-- **API desplegada:** _(añadir URL de Vercel)_
-- **Repositorio:** _(este repo)_
+- **Front desplegado:** https://disai-uniformes-front.vercel.app
+- **API desplegada:** https://disai-uniformes-api.vercel.app
+- **Repositorio:** https://github.com/vanessvalentina/disai-uniformes
 
 ## Stack
 - **Backend:** Node + Express + **Mongoose** (MongoDB Atlas)

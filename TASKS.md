@@ -23,9 +23,9 @@ Estados: ⬜ pendiente · 🟡 en curso · ✅ hecho
 - ✅ Estilos corporativos de Disai (azul marino + azul + beige)
 
 ## Despliegue
-- ⬜ Repo GitHub con commits
-- ⬜ API en Vercel
-- ⬜ Front en Vercel (`VITE_API_URL` apuntando a la API desplegada)
+- ✅ Repo GitHub con commits (disai-uniformes)
+- ✅ API en Vercel (https://disai-uniformes-api.vercel.app)
+- ✅ Front en Vercel (https://disai-uniformes-front.vercel.app, `VITE_API_URL` a la API)
 
 ## Documentación
 - ✅ README con descripción + instalación + uso de IA + reflexión
